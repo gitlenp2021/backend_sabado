@@ -17,7 +17,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author user
+ * @author lenp
  */
 @Entity
 @Table(name = "category")
