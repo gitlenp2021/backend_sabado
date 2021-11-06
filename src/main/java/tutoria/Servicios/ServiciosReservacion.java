@@ -12,22 +12,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
- * @author user
+ * Control de ServiciosReservacion en Fincas
+ * @author Eduardo Niño
  */
 @Service
 public class ServiciosReservacion {
     @Autowired
+    /**
+    * Método ReservacionRepositorio
+     */
     private ReservacionRepositorio metodosCrud;
     
+    /**
+    * Reservación de la Finca
+     */
     public List<Reservacion> getAll(){
         return metodosCrud.getAll();
     }
 
+    /**
+    * getReservation
+     */
     public Optional<Reservacion> getReservation(int reservationId) {
         return metodosCrud.getReservation(reservationId);
     }
 
+    /**
+    * Reservacion save
+     */
     public Reservacion save(Reservacion reservation){
         if(reservation.getIdReservation()==null){
             return metodosCrud.save(reservation);
@@ -41,6 +53,9 @@ public class ServiciosReservacion {
         }
     }
     
+    /**
+    * Reservacion update
+     */
     public Reservacion update(Reservacion reservacion){
         if(reservacion.getIdReservation()!=null){
             Optional<Reservacion> e= metodosCrud.getReservation(reservacion.getIdReservation());
@@ -65,6 +80,9 @@ public class ServiciosReservacion {
         }
     }
 
+    /**
+    * deleteReservation
+     */
     public boolean deleteReservation(int reservationId) {
         Boolean aBoolean = getReservation(reservationId).map(reservation -> {
             metodosCrud.delete(reservation);
